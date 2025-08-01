@@ -1,7 +1,5 @@
 import { useCharacters } from '../hooks/useCharacters';
 import Grid from '@mui/material/Grid';
-import { useDispatch, useSelector } from 'react-redux';
-import type { RootState } from '../store';
 import CharacterCard from './CharacterCard';
 import { Box, Typography } from '@mui/material';
 
@@ -16,7 +14,6 @@ type Props = {
 
 export default function CharacterList({ page, filter, onPageCountChange }: Props) {
   const { data, isLoading, error } = useCharacters(page, filter);
-  const favorites = useSelector((state: RootState) => state.favorites.favorites);
 
 if (isLoading)
   return (
@@ -82,7 +79,6 @@ if (!data || data.results.length === 0)
   return (
     <Grid container spacing={3} justifyContent="center">
       {data.results.map((char: any) => {
-        const isFav = favorites.includes(char.id);
         return (
           <Grid item xs={12} sm={6} md={4} lg={3} key={char.id}>
             <CharacterCard characterId={char.id} characterData={char} />
