@@ -1,7 +1,6 @@
 # Rick and Morty Characters Web App
 
 
-## 🛠️ تکنولوژی‌ه
 Technologies
 - React 18 + TypeScript
 - Vite
