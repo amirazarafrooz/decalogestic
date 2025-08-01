@@ -1,6 +1,5 @@
-import Grid from '@mui/material/Grid';
-import CharacterCard from './CharacterCard';
 import { Box, Typography } from '@mui/material';
+import CharacterCard from './CharacterCard';
 import { useCharacters } from '../hooks/useCharacters';
 import type { Character } from '../hooks/useCharacters';
 
@@ -37,15 +36,22 @@ export default function CharacterList({ page, filter, onPageCountChange }: Props
       </Box>
     );
 
+  // اطلاع دادن تعداد صفحات به والد
   onPageCountChange(data.info.pages);
 
   return (
-    <Grid container spacing={3} justifyContent="center">
+    <Box
+      sx={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(3, 1fr)',
+        gap: 3,
+        mt: 3,
+        justifyItems: 'center',
+      }}
+    >
       {data.results.map((char: Character) => (
-        <Grid item xs={12} sm={6} md={4} lg={3} key={char.id}>
-          <CharacterCard characterId={Number(char.id)} characterData={char} />
-        </Grid>
+        <CharacterCard key={char.id} characterId={Number(char.id)} characterData={char} />
       ))}
-    </Grid>
+    </Box>
   );
 }

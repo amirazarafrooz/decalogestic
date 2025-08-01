@@ -1,4 +1,4 @@
-import { Typography, Grid } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { useSelector } from 'react-redux';
 import type { RootState } from '../store';
 import CharacterCard from '../components/CharacterCard';
@@ -39,17 +39,23 @@ export default function FavoritesPage() {
         Favorites
       </Typography>
 
-      <Grid
-        container
-        spacing={2}
-        sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
-      >
-        {favorites.map((id) => (
-          <Grid item xs={12} sm={6} md={4} lg={3} key={id}>
-            <CharacterCard characterId={id} />
-          </Grid>
-        ))}
-      </Grid>
+   <Box
+  sx={{
+   display: 'grid',
+        gridTemplateColumns: 'repeat(3, 1fr)',
+        gap: 3,
+        mt: 3,
+        justifyItems: 'center',
+  }}
+>
+  {favorites.map((id) => (
+    <Box
+      key={id}
+    >
+      <CharacterCard characterId={id} />
+    </Box>
+  ))}
+</Box>
     </div>
   );
 }
