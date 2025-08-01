@@ -36,7 +36,6 @@ export default function CharacterList({ page, filter, onPageCountChange }: Props
       </Box>
     );
 
-  // اطلاع دادن تعداد صفحات به والد
   onPageCountChange(data.info.pages);
 
   return (
