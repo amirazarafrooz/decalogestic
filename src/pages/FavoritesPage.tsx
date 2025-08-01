@@ -1,5 +1,6 @@
 // src/pages/FavoritesPage.tsx
-import { Typography, Grid } from '@mui/material';
+import { Typography } from '@mui/material';
+import Grid from '@mui/material/Grid';
 import { useSelector } from 'react-redux';
 import type { RootState } from '../store';
 import CharacterCard from '../components/CharacterCard'; // کارت مستقل بهتره
@@ -17,13 +18,13 @@ export default function FavoritesPage() {
  <Typography   className="roboto"  color="black" variant="h4" display='flex' justifyContent='center' alignItems='center' marginTop={5} fontWeight='bold' gutterBottom> 
         Favorites 
       </Typography>        
-        
-      <Grid container spacing={2}  xs={12} sm={6} md={4} lg={3} display="flex" justifyContent="center" alignItems='center'>
+      <Grid container spacing={2} display="flex" justifyContent="center" alignItems='center'>
         {favorites.map((id) => (
-          <Grid item key={id}>
+          <Grid item xs={12} sm={6} md={4} lg={3} key={id}>
             <CharacterCard characterId={id} />
           </Grid>
         ))}
+      </Grid>
       </Grid>
     </div>
   );
